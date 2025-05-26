@@ -1,0 +1,24 @@
+{
+  "name": "gridclash_backend",
+  "version": "1.0.0",
+  "description": "backend for web based Noughts and crosses (tic tac toe) game",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radekbys/GridClash_backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/radekbys/GridClash_backend/issues"
+  },
+  "homepage": "https://github.com/radekbys/GridClash_backend#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
