@@ -19,12 +19,26 @@ app.get('/', (req, res) => {
   res.send('Hello, World!')
 })
 
-app.get('/start', (req, res) => {
+app.get('/game/:gameId', (req, res) => {
+  const gameId = Number(req.params.gameId)
+  const gameIndex = games.findIndex(g => g.id === gameId)
+  if (gameIndex === -1) {
+    return res.status(404).json({ error: 'Game not found' })
+  }
+  const game = games[gameIndex]
+  res.json({ message: 'game loaded', game })
+})
+
+app.post('/start', (req, res) => {
   const id = gameId
   gameId += 1
+
+  players = req.body.players
+
   const game = {
     id: id,
     winner: null,
+    players: players,
     log: []
   }
   games.push(game)
@@ -45,11 +59,6 @@ app.post('/nextTurn', (req, res) => {
   const winner = getDerivedWinnerFromLog(game.log)
   if (winner) {
     game.winner = winner
-    res.json({ message: 'Turn recorded', game })
-
-    // 🧹 Remove the game from the array
-    games.splice(gameIndex, 1)
-    return
   }
 
   res.json({ message: 'Turn recorded', game })
